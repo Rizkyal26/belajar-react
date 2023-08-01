@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <!-- Fungsi buat judul tab halaman-->
+    <title>Belajar React.js Pemula</title>
+
+    <!-- Fungsi React-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- Fungsi Dom buat React-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> 
+
+    <!-- Fungsi Babel buat menjalankan JSX di web-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!--  jangan lupa tupe text nya diganti babel(berwarna) atau jsx(tidak berwarna) -->
+    <script type="text/babel">
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+         
+        function Header({ name }) {
+            return (
+                <h1> Belajar React nih {name ? name : 'RizkyAL'} 🌹  </h1>
+                );
+        }
+
+
+        // Fungsi HomePage() mengembalikan sebuah halaman web yang menampilkan daftar siswa dan jumlah likes untuk setiap siswa.
+        function HomePage() {
+            
+            // Daftar siswa.
+            const students = ['Rizky', 'Fachri', 'Al'];
+
+            // Jumlah likes
+            const [likes, setLikes] = React.useState(0);
+
+            // Fungsi yang dipanggil ketika tombol "Like" diklik.
+            function handleClick() {
+                setLikes(likes + 1);
+            }
+
+                // Mengembalikan halaman web.
+                return (
+                <>
+                
+                    <Header name="RizkyAL" />
+                    <img src="img.png" width="100" alt="My Image" />
+                    <ul>
+                    {
+                    students.map((student) => (
+                        <li key={student}>{student}</li>
+                    ))
+                    }
+                    </ul>
+                    <button onClick={handleClick}>Like ({likes})</button>
+                 </>
+            );
+            
+        }
+        root.render(<HomePage />);
+    </script>
+</body>
+
+</html>
