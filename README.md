@@ -5,7 +5,7 @@ Terimakasih banyak kepada beliau untuk ilmu pembelajaran nya tentang React.JS
 
 Berikut ini merupakan Library (sesajen) untuk penggunaan React.js dalam versi sederhana:
 
-#### 1. Mengambil Daftar Provinsi
+#### 1. Simple Library
 
 <!-- Perintah berikut dapat diletakan langsung di Head atau di body-->
 <head>
