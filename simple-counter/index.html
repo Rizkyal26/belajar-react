@@ -1,0 +1,94 @@
+<html>
+
+<body>
+    
+    <div id="root"></div>
+
+    <!-- Fungsi React-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- Fungsi Dom buat React-->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> 
+
+    <!-- Fungsi Babel buat menjalankan JSX di web-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+    <!--  jangan lupa type text nya diganti babel(berwarna) atau jsx(tidak berwarna) -->
+    <script type="text/babel">
+        
+        // merupakan function declaration dari perintah yang akan dibuat
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+            
+            function MyButton({ text, onClick, counter }) {
+            const myStyle = (text !== 'Reset!') ? {} : {margin: 20, display: 'block'};
+
+                return (
+                    <button onClick={onClick} style={myStyle}>
+                        {text}
+                    </button>
+                );
+            }
+
+            function MyCounter({counter}) {
+                return (
+                    <span style={{ margin: 20 }}>{counter}</span>
+                )
+            }
+
+            function HomePage() {
+                const [counter, setCounter] = React.useState(0);
+                const [done, setDone] = React.useState(false);
+
+            // fungsi untuk penjumlahan +1 tiap di klick
+            function increment() {
+                setCounter(counter + 1);
+                if (counter > 9 || counter < -9) {
+                setDone(true);
+                }
+            }
+
+            // fungsi untuk penjumlahan -1 tiap di klick
+            function decrement() {
+            setCounter(counter - 1);
+            if (counter > 9 || counter < -9) {
+                setDone(true);
+            }
+            }
+
+            // fungsi untuk perkalian *2 tiap di klick
+            function multiplication() {
+            setCounter(counter * 2);
+            }
+
+            // fungsi untuk pembagian :1 tiap di klick
+            function distribution() {
+            setCounter(counter / 2);
+            }
+
+            function reset() {
+            setCounter(0);
+            setDone(false);
+            }
+
+            return (
+
+            // berikut ini merupakan UI tombol untuk function di atas
+            <div>
+                <MyButton text={'-'} onClick={decrement} counter={counter} />
+                <MyButton text={'*'} onClick={multiplication} counter={counter} />
+                <MyCounter counter={counter} />
+                <MyButton text={'+'} onClick={increment} counter={counter} />  
+                <MyButton text={':'} onClick={distribution} counter={counter} /> 
+                <MyButton text={'Reset!'} onClick={reset} counter={counter} />
+                {done && <h2>Done!</h2>}
+            </div>
+
+            );
+        }
+
+    root.render(<HomePage />);
+    </script>
+</body>
+
+</html>
